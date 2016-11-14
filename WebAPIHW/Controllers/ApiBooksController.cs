@@ -71,9 +71,7 @@ namespace WebAPIHW.Controllers
         // PUT: api/ApiBooks/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutBook(int id, [FromBody] Book book)
-        {
-            
-
+        {            
             Book oldBook = db.Books.FirstOrDefault(x => x.BookId == id);
 
             oldBook.Age = book.Age;
@@ -84,23 +82,7 @@ namespace WebAPIHW.Controllers
             db.SaveChanges();
             return Ok(book);
         }
-
-     
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private bool BookExists(int id)
-        {
-            return db.Books.Count(e => e.BookId == id) > 0;
-        }
-
+        
 
         // DELETE: api/ApiBooks/5
         [ResponseType(typeof(Book))]
@@ -127,7 +109,7 @@ namespace WebAPIHW.Controllers
         }
         //Api/{controller}/{action}
         
-        // GET api/values/5
+        // GET api/values/BookTypeId
         [HttpGet]
         public IEnumerable<TDOBookandTypeandAuthor> BooksFullInfo(int id)
         {

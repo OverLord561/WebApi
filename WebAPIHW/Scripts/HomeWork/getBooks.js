@@ -5,7 +5,6 @@ $(document).ready(function () {
     $('#ShowCreateForm').on('click', function () {
         document.getElementById('divCreateNewBook').style.visibility='visible';
     });
-
     $('#buttonEditBook').on('click', function (ev) {
         ev.preventDefault();
 
@@ -78,13 +77,15 @@ $(document).ready(function () {
                    
                          
                 },
-                    
+                error : function()
+                {
+                    alert('Current book type does not exist!!!');
+                },
                 processData: false,
                 cache: false
             })
         
     });
-
     $('#ShowAll').on('click', function(){
         $('#MyTable').empty();
         BooksFullInfo();
@@ -107,8 +108,7 @@ $(document).ready(function () {
     function createTH()
     {
         return document.createElement('th');
-    }
-    
+    }    
     function GetGenres() {
         $.ajax({
             url: 'api/ApiBooks/GetGenres',
@@ -133,7 +133,6 @@ $(document).ready(function () {
 
         });
     };
-    
     function DrawTable(data)
     {
         var tableDOM = document.getElementById('MyTable');
@@ -206,9 +205,7 @@ $(document).ready(function () {
 
         });
 
-    };
-    
-
+    };  
     function DrawCrud(crudcell, item)
     {
         var editIcon = document.createElement('span');
@@ -223,6 +220,7 @@ $(document).ready(function () {
         deleteIcon.className = "glyphicon glyphicon-remove";
         deleteIcon.style.margin = '0 2px 0 2px';
         deleteIcon.addEventListener('click', function () {
+
             DropBook(item['Id']);
         });
         
@@ -231,6 +229,7 @@ $(document).ready(function () {
         detailsIcon.className = "glyphicon glyphicon-list";
         detailsIcon.style.margin = '0 2px 0 2px';
         detailsIcon.addEventListener('click', function () {
+
             DetailsBook(item.Id);
         });
 
@@ -264,15 +263,12 @@ $(document).ready(function () {
                 new BooksFullInfo();;
 
             }
-        });
-        
+        });       
        
     };
     function EditBook(item) {
 
         document.getElementById('divEditBook').style.visibility = "visible"; 
-
-
         document.getElementById('buttonEditBook').dataset['id'] = item.Id;
 
         document.getElementById('EditName').value = item.Name;
