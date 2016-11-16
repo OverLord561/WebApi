@@ -37,3 +37,24 @@ padding-left:10px;
 .mytable {
     margin-top: 15px;
 }
+
+.booksTable {
+        margin-top: 45px;
+}
+.mydropdown {
+    height: 45px;
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.33;
+    border-radius: 6px;
+}
+
+.customDropDown li {
+padding-left:10px;
+font-size: large;
+}
+.customDropDown li:hover {
+color: #ffffff;
+    text-decoration: none;
+    background-color: #428bca;
+}

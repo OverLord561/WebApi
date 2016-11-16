@@ -113,11 +113,11 @@ namespace WebAPIHW.Controllers
         [HttpGet]
         public IEnumerable<TDOBookandTypeandAuthor> BooksFullInfo(int id)
         {
-          
-            var control = db.Books.FirstOrDefault(x => x.BookTypeId == id);
 
-            var books = control==null? db.Books: db.Books.Where(x => x.BookTypeId == id);
-                    
+            //var control = db.Books.FirstOrDefault(x => x.BookTypeId == id);
+
+            //var books = control==null? db.Books: db.Books.Where(x => x.BookTypeId == id);
+            var books = db.Books.Where(x => x.BookTypeId == id);
             return TDO(books);
             
         }

@@ -16,14 +16,20 @@ namespace WebAPIHW.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Add()
+        {    
+            return View();
+        }
+        public ActionResult Edit()
         {
-            ViewBag.Message = "Your application description page.";
-
+            return View();
+        }
+        public ActionResult Delete()
+        {
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Books()
         {
             ViewBag.Message = "Your contact page.";
 
